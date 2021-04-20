@@ -1,10 +1,11 @@
 import axios from "axios";
 import { GET_ERRORS, LOGOUT_USER, SET_CURRENT_USER } from "../constants";
 import setAuthHeader from "../utils/setAuthHeader";
+import { baseUrl } from "../config.js";
 
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post("http://localhost:5000/api/users/login", userData)
+    .post(`${baseUrl}/users/login`, userData)
     .then((res) => {
       const { token, user } = res.data;
       setAuthHeader(token);
@@ -21,7 +22,7 @@ export const loginUser = (userData) => (dispatch) => {
 
 export const registerUser = (userData, history) => (dispatch) => {
   axios
-    .post("http://localhost:5000/api/users/register", userData)
+    .post(`${baseUrl}/users/register`, userData)
     .then((res) => history.push("/login"))
     .catch((err) =>
       dispatch({
@@ -33,7 +34,7 @@ export const registerUser = (userData, history) => (dispatch) => {
 
 export const getCurrentUser = () => (dispatch) => {
   axios
-    .get("http://localhost:5000/api/users")
+    .get(`${baseUrl}/users`)
     .then((res) => dispatch(setCurrentUser(res.data)));
 };
 

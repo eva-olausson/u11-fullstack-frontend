@@ -6,11 +6,12 @@ import {
   GET_POSTS,
   LOADING_POSTS,
 } from "../constants";
+import { baseUrl } from "../config.js";
 
 export const getUserProfile = (userId) => (dispatch) => {
   dispatch(loadProfile());
   axios
-    .get(`http://localhost:5000/api/users/${userId}`)
+    .get(`${baseUrl}/users/${userId}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -23,7 +24,7 @@ export const getUserProfile = (userId) => (dispatch) => {
 export const getProfiles = () => (dispatch) => {
   dispatch(loadProfile);
   axios
-    .get("http://localhost:5000/api/users")
+    .get(`${baseUrl}/users`)
     .then((res) =>
       dispatch({
         type: GET_PROFILES,
@@ -36,7 +37,7 @@ export const getProfiles = () => (dispatch) => {
 export const getPostsByUserId = (userId) => (dispatch) => {
   dispatch(loadPosts());
   axios
-    .get(`http://localhost:5000/api/posts/${userId}`)
+    .get(`${baseUrl}/posts/${userId}`)
     .then((res) =>
       dispatch({
         type: GET_POSTS,
@@ -47,14 +48,12 @@ export const getPostsByUserId = (userId) => (dispatch) => {
 };
 
 export const deleteProfile = (userId) => (dispatch) => {
-  axios
-    .delete(`http://localhost:5000/api/users/${userId}`)
-    .catch((err) => console.log(err));
+  axios.delete(`${baseUrl}/users/${userId}`).catch((err) => console.log(err));
 };
 
 export const searchUser = (searchData, history) => (dispatch) => {
   axios
-    .post("http://localhost:5000/api/users/search", searchData)
+    .post(`${baseUrl}/users/search`, searchData)
     .then((res) => {
       history.push(`/profile/${res.data.userId}`);
     })
