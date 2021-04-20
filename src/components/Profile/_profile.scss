@@ -1,0 +1,97 @@
+.profile-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cover > h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.cover > .container > h2 {
+  text-align: center;
+  font-size: 24px;
+  margin: 2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.profile-card {
+  width: 100%;
+  min-height: 250px;
+  padding: 0;
+  background-color: white;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  line-height: 2;
+  border-radius: 50px;
+  text-align: center;
+
+  .profile-content {
+    background-color: #c1fbf7;
+    max-height: 90px;
+    border-radius: 50px 50px 0 0;
+    padding-top: 1rem;
+  }
+
+  .profile-content > h1 {
+    font-size: 20px;
+  }
+
+  .profile-content > h2 {
+    font-size: 15px;
+  }
+
+  .profile-content > h3 {
+    font-size: 13px;
+  }
+
+  .profile-messages {
+    margin-top: 16rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .profile-messages .post-container {
+    background-color: white;
+  }
+}
+
+@media (min-width: 995px) {
+  .cover {
+    margin: auto;
+    padding-top: 1rem;
+  }
+  .cover > h1 {
+    font-size: 30px;
+  }
+  .cover > .container > h2 {
+    font-size: 2.5rem;
+  }
+
+  .cover .post {
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-content > h1 {
+    font-size: 27px;
+  }
+
+  .profile-card {
+    min-width: 300px;
+    min-height: 250px;
+    padding: 0;
+    background-color: white;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    line-height: 2;
+    border-radius: 50px;
+    text-align: center;
+  }
+}

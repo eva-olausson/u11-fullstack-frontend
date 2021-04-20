@@ -1,0 +1,88 @@
+@import "../../variables";
+
+.postList-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  .add-post-container {
+    width: 31rem;
+    height: 100%;
+    margin-bottom: 20rem;
+  }
+
+  .postform-card {
+    width: 100%;
+    height: 15rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 50px;
+    transition: 0.3s;
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 6px -6px black;
+  }
+
+  button {
+    position: absolute;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    //background: rgba(93, 176, 171, 0.63);
+    background: #c1fbf7;
+    color: black;
+    border-radius: 100px;
+    border: none;
+    min-width: 125px;
+    height: 48px;
+    top: 9.8rem;
+    right: 3.5rem;
+    cursor: pointer;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .postform-card input {
+    background: #f0f0f0;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #898a8d;
+    border: none;
+    width: 14rem;
+    height: 3rem;
+    margin: 1.4rem 0 0 2rem;
+    overflow: hidden;
+    border-radius: 15px;
+    text-indent: 30px;
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+@media (min-width: $medium) {
+  .postform-card {
+    width: 100%;
+    height: 17rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 30px;
+    transition: 0.3s;
+    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 6px -6px black;
+  }
+  .postform-card input {
+    min-width: 17rem;
+    height: 3rem;
+  }
+
+  .postList-container button {
+    min-width: 130px;
+    height: 43px;
+  }
+}
