@@ -28,7 +28,7 @@ class Profile extends Component {
             <div className="profile-content">
               <AccountCircleOutlinedIcon
                 style={{
-                  fontSize: "70px",
+                  fontSize: "60px",
                 }}
               />
               <h1>{profile.username}</h1>
@@ -44,13 +44,11 @@ class Profile extends Component {
         <div className="container">
           <SearchForm />
 
-          <div className="cover">
-            <h1>Profil</h1>
+          <h1>Profil</h1>
 
-            {profileInfo}
-            <h2>Meddelanden</h2>
-            <div className="profile-messages">{items}</div>
-          </div>
+          {profileInfo}
+          <h2>Meddelanden</h2>
+          <div className="profile-messages">{items}</div>
         </div>
       </>
     );

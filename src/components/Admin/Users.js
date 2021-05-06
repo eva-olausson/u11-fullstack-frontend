@@ -21,7 +21,7 @@ class UserList extends Component {
           <h1>Användare</h1>
           {/* {loading ? <LoadProfile /> : items} */}
           <div role="list">
-            <ul>{items}</ul>
+            <ul className="user-container">{items}</ul>
           </div>
         </section>
       </>
