@@ -12,10 +12,11 @@ const styles = (theme) => ({
   search: {
     position: "relative",
     borderRadius: "50px",
-    backgroundColor: "#F0F0F0",
-    boxShadow: "0 8px 6px -6px black",
+    backgroundColor: "white",
+    //boxShadow: "0 8px 6px -6px black",
     marginLeft: 0,
     marginBottom: "2rem",
+    border: "solid black 1px",
     minWidth: "50%",
     minHeight: "3rem",
 

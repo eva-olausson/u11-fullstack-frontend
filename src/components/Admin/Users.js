@@ -18,12 +18,10 @@ class UserList extends Component {
       <>
         <section className="container">
           <SearchForm />
-          <div className="cover">
-            <h1>Användare</h1>
-            {/* {loading ? <LoadProfile /> : items} */}
-            <div role="list">
-              <ul>{items}</ul>
-            </div>
+          <h1>Användare</h1>
+          {/* {loading ? <LoadProfile /> : items} */}
+          <div role="list">
+            <ul>{items}</ul>
           </div>
         </section>
       </>

@@ -20,10 +20,8 @@
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: white;
-    border-radius: 50px;
-    transition: 0.3s;
-    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 8px 6px -6px black;
+    border-radius: 30px;
+    border: solid 1px black;
   }
 
   button {
@@ -31,9 +29,8 @@
     font-family: "Poppins", sans-serif;
     font-size: 15px;
     font-weight: bold;
-    //background: rgba(93, 176, 171, 0.63);
-    background: #c1fbf7;
-    color: black;
+    background: #3a10e5;
+    color: white;
     border-radius: 100px;
     border: none;
     min-width: 125px;
@@ -73,8 +70,7 @@
     background-color: white;
     border-radius: 30px;
     transition: 0.3s;
-    //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 8px 6px -6px black;
+    border: solid black 1px;
   }
   .postform-card input {
     min-width: 17rem;
