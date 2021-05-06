@@ -38,7 +38,7 @@ const styles = (theme) => ({
     width: "100%",
   },
   inputInput: {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins, Arial, HelveticaNeue, Helvetica, sansSerif",
     paddingTop: "1rem",
     paddingLeft: "4rem",
     transition: theme.transitions.create("width"),
