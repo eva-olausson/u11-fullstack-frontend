@@ -1,100 +1,111 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./_auth.scss";
 
 import { registerUser } from "../../actions/authActions";
 
-class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      email: "",
-      password: "",
-      password2: "",
-    };
+const Register = () => {
+  const [values, setValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+  const errors = useSelector((state) => state.errors.errors);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  const dispatch = useDispatch();
+  let history = useHistory();
+
+  if (errors) {
+    return <h1>Error...</h1>;
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-  handleSubmit(e) {
+
+  const handleUsernameInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      username: e.target.value,
+    }));
+  };
+
+  const handleEmailInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      email: e.target.value,
+    }));
+  };
+
+  const handlePasswordInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      password: e.target.value,
+    }));
+  };
+
+  const handlePassword2InputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      password2: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password,
-      password2: this.state.password2,
-      errors: {},
-    };
+    dispatch(registerUser(values, history));
+  };
 
-    // eslint-disable-next-line no-restricted-globals
-    this.props.registerUser(userData, this.props.history);
+  return (
+    <div className="form-container">
+      <form className="signupform-card" onSubmit={handleSubmit}>
+        <h1>Skapa konto</h1>
 
-    console.log(userData);
-  }
-  render() {
-    return (
-      <div className="form-container">
-        <form className="loginform-card" onSubmit={this.handleSubmit}>
-          <h1>Skapa konto</h1>
+        <input
+          label="Användarnamn"
+          name="username"
+          placeholder="Användarnamn"
+          type="text"
+          onChange={handleUsernameInputChange}
+          value={values.username}
+        />
+        <br />
+        <input
+          label="Email"
+          name="email"
+          placeholder="Email"
+          type="email"
+          onChange={handleEmailInputChange}
+          value={values.email}
+        />
+        <br />
+        <input
+          label="Lösenord"
+          name="password"
+          placeholder="Lösenord"
+          type="password"
+          onChange={handlePasswordInputChange}
+          value={values.password}
+        />
+        <br />
+        <input
+          label="Repetera lösenord"
+          name="password2"
+          placeholder="Repetera lösenord"
+          type="password"
+          onChange={handlePassword2InputChange}
+          Registrer
+          value={values.password2}
+        />
+        <br />
+        <button inputtype="submit" value="Submit">
+          Registrera dig
+        </button>
+      </form>
+    </div>
+  );
+};
 
-          <input
-            label="Användarnamn"
-            name="username"
-            placeholder="Användarnamn"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
-          <br />
-          <input
-            label="Email"
-            name="email"
-            placeholder="Email"
-            type="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-          <br />
-          <input
-            label="Lösenord"
-            name="password"
-            placeholder="Lösenord"
-            type="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <br />
-          <input
-            label="Repetera lösenord"
-            name="password2"
-            placeholder="Repetera lösenord"
-            type="password"
-            onChange={this.handleChange}
-            Registrer
-            value={this.state.password2}
-          />
-          <br />
-          <button inputtype="submit" value="Submit">
-            Registrera dig
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  errors: state.errors,
-});
-
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default Register;

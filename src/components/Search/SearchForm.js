@@ -1,14 +1,12 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import React from "react";
+import { makeStyles } from "@material-ui/core";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { searchUser } from "../../actions/profileActions";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
     borderRadius: "50px",
@@ -48,45 +46,38 @@ const styles = (theme) => ({
       width: 200,
     },
   },
-});
+}));
 
-class SearchForm extends Component {
-  constructor(props) {
-    super(props);
+const SearchForm = () => {
+  const dispatch = useDispatch();
+  let history = useHistory();
+  const classes = useStyles();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     const searchData = {
       text: e.target.value,
     };
 
     if (e.key === "Enter") {
-      this.props.searchUser(searchData, this.props.history);
+      dispatch(searchUser(searchData, history));
     }
-  }
+  };
 
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <SearchIcon />
-        </div>
-        <InputBase
-          placeholder="Sök efter användare"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          onKeyPress={this.handleSubmit}
-        />
+  return (
+    <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
       </div>
-    );
-  }
-}
+      <InputBase
+        placeholder="Sök efter användare"
+        classes={{
+          root: classes.inputRoot,
+          input: classes.inputInput,
+        }}
+        onKeyPress={handleSubmit}
+      />
+    </div>
+  );
+};
 
-export default connect(null, { searchUser })(
-  withRouter(withStyles(styles)(SearchForm))
-);
+export default SearchForm;

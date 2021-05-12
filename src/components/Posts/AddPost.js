@@ -1,53 +1,43 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addPost } from "../../actions/postActions";
+
 import "./_add-post.scss";
 
-class AddPost extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-    };
+const AddPost = () => {
+  const [postData, setPostData] = useState({ text: "" });
+  const dispatch = useDispatch();
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const handleChange = (e) => {
+    setPostData({ text: e.target.value });
+  };
 
-  handleChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addPost(postData));
+  };
 
-    const postData = {
-      text: this.state.text,
-    };
+  return (
+    <div>
+      <div>
+        <form className="postform-card" onSubmit={handleSubmit}>
+          <br />
+          <input
+            label="text"
+            placeholder="What's happening?"
+            type="text"
+            onChange={handleChange}
+            value={postData.text}
+            name="text"
+          />
+          <br />
+          <button type="submit" value="Dela">
+            Dela
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-    this.props.addPost(postData);
-    this.setState({ text: "" });
-  }
-
-  render() {
-    return (
-      <form className="postform-card" onSubmit={this.handleSubmit}>
-        <br />
-        <input
-          label="text"
-          placeholder="What's happening?"
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.text}
-          name="text"
-        />
-        <br />
-        <button type="submit" value="Skicka">
-          Dela
-        </button>
-      </form>
-    );
-  }
-}
-
-export default connect(null, { addPost })(AddPost);
+export default AddPost;
