@@ -19,7 +19,7 @@ const styles = {
     flexGrow: 1,
   },
   logo: {
-    color: "#fff",
+    color: "#000",
     fontSize: 30,
     fontWeight: 600,
 
@@ -152,9 +152,8 @@ class Header extends Component {
           position="static"
           style={{
             background: "0",
-            color: "white",
+            color: "black",
             boxShadow: "0px 0px 0px 0px",
-            //borderBottom: "1px solid black",
             fontSize: "64px",
           }}
         >

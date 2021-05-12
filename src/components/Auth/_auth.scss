@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .form-container {
   display: flex;
   align-items: center;
@@ -17,48 +19,15 @@
     min-height: 336px;
     width: 90%;
     padding: 2rem;
+    border: black solid 1px;
     background-color: white;
     border-radius: 50px;
-    transition: 0.3s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-  }
-
-  .signupform-card {
-    min-height: 336px;
-    width: 90%;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 50px;
-    transition: 0.3s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    text-align: center;
-  }
-
-  button {
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    display: inline-block;
-    background: rgba(93, 176, 171, 0.63);
-    text-decoration: none;
-    border: none;
-    font-size: 0.8rem;
-    color: black;
-    border-radius: 100px;
-    border: none;
-    width: 14rem;
-    height: 53px;
-    margin-top: 1rem;
-    cursor: pointer;
-    &:focus {
-      outline: 0;
-    }
   }
 
   input {
-    background: #f0f0f0;
-    font-family: "Poppins", sans-serif;
+    background: $lightgrey;
+    font-family: "Poppins", sans-Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
     color: #898a8d;
     border: none;
@@ -74,10 +43,33 @@
   }
 }
 
-/*
+button {
+  font-family: "Poppins", sans-Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  background: $darkblue;
+  text-decoration: none;
+  border: none;
+  font-size: 0.8rem;
+  color: white;
+  border-radius: 100px;
+  border: none;
+  width: 14rem;
+  height: 53px;
+  margin-top: 1rem;
+  cursor: pointer;
+  &:focus {
+    outline: 0;
+  }
+}
+
 @media (min-width: 995px) {
   input {
     min-width: 17rem;
   }
+  .loginform-card {
+    min-height: 336px;
+    max-width: 400px;
+  }
 }
-*/
