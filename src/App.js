@@ -8,7 +8,7 @@ import NotFound from "./components/Profile/NotFound";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Main from "./components/Layout/Main";
-import Users from "./components/Admin/Users";
+import UserList from "./components/Admin/UserList";
 
 import "./App.css";
 import "./app.scss";
@@ -43,7 +43,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
-              <Route path="/users" component={Users} />
+              <Route path="/users" component={UserList} />
               <Route path="/register" component={Register} />
               <Route path="/profile/:userId" component={Profile} />
               <Route component={NotFound} />

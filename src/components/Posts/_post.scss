@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .post {
   width: 90%;
   max-height: 17rem;
@@ -52,7 +54,7 @@
   }
 }
 
-@media (min-width: 995px) {
+@media (min-width: $big) {
   .post {
     max-height: 17rem;
   }

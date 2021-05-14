@@ -12,11 +12,11 @@ import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 
 import { logoutUser } from "../../actions/authActions";
-import SearchForm from "../Search/SearchForm";
 
 const styles = {
   root: {
     flexGrow: 1,
+    fontFamily: "Poppins",
   },
   logo: {
     color: "#000",
@@ -126,21 +126,20 @@ class Header extends Component {
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.handleClose}>
-            <Link to="/">Home</Link>
+            <Link to="/">Hem</Link>
+          </MenuItem>
+          <MenuItem onClick={this.handleClose}>
+            <Link to={`/profile/${user._id}`}>Min Profil</Link>
           </MenuItem>
 
           {user.isAdmin && (
             <MenuItem onClick={this.handleClose}>
-              <Link to="/users">Users</Link>
+              <Link to="/users">Användare</Link>
             </MenuItem>
           )}
-
-          <MenuItem onClick={this.handleClose}>
-            <Link to={`/profile/${user._id}`}>Profile</Link>
-          </MenuItem>
           <MenuItem>
             <Link to="/#" onClick={this.handleLogout}>
-              Logout
+              Logga ut
             </Link>
           </MenuItem>
         </Menu>

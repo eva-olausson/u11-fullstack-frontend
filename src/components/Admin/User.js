@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { deleteProfile } from "../../actions/profileActions";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 
 import "./_users.scss";
 
-class User extends Component {
-  render() {
-    const { user, deleteProfile } = this.props;
-    return (
+const User = ({ user }) => {
+  const dispatch = useDispatch();
+  return (
+    <div className="user-container">
       <div className="user-card">
         <div className="user-content">
           <AccountCircleOutlinedIcon
@@ -24,7 +24,7 @@ class User extends Component {
           <button
             type="submit"
             onClick={async () => {
-              await deleteProfile(user._id);
+              await dispatch(deleteProfile(user._id));
               location.reload(); // eslint-disable-line
             }}
           >
@@ -32,12 +32,8 @@ class User extends Component {
           </button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-  deleteProfile: state.deleteProfile,
-});
-
-export default connect(mapStateToProps, { deleteProfile })(User);
+export default User;

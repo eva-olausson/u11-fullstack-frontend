@@ -1,66 +1,69 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { getPostsByUserId, getUserProfile } from "../../actions/profileActions";
 import Post from "../Posts/Post";
 import "./_profile.scss";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import SearchForm from "../Search/SearchForm";
+import { useParams } from "react-router-dom";
 
-class Profile extends Component {
-  constructor(props) {
-    super(props);
+const Profile = () => {
+  const list = useSelector((state) => state.post.list);
+  const profile = useSelector((state) => state.profile.user);
+  const errors = useSelector((state) => state.errors.errors);
+
+  const dispatch = useDispatch();
+
+  let { userId } = useParams();
+
+  useEffect(() => {
+    dispatch(getPostsByUserId(userId));
+    dispatch(getUserProfile(userId));
+  }, [dispatch, userId]);
+
+  if (errors) {
+    return <h1>Error...</h1>;
   }
 
-  componentDidMount() {
-    this.props.getPostsByUserId(this.props.match.params.userId);
-    this.props.getUserProfile(this.props.match.params.userId);
-  }
+  let items;
+  items = list && list.map((el) => <Post key={el._id} post={el} />);
+  let profileInfo;
+  if (profile && items) {
+    profileInfo = (
+      <div className="profile-container">
+        <div className="profile-card">
+          <div className="profile-content">
+            <AccountCircleOutlinedIcon
+              style={{
+                fontSize: "70px",
+              }}
+            />
+            <h1>{profile.username}</h1>
+            <h2>{profile.email}</h2>
 
-  render() {
-    const { list, auth, profile } = this.props;
-    let items;
-    items = list && list.map((el) => <Post key={el._id} post={el} />);
-    let profileInfo;
-    if (profile && items) {
-      profileInfo = (
-        <div className="profile-container">
-          <div className="profile-card">
-            <div className="profile-content">
-              <AccountCircleOutlinedIcon
-                style={{
-                  fontSize: "60px",
-                }}
-              />
-              <h1>{profile.username}</h1>
-              <h2>{profile.email}</h2>
-              <h3>Meddelanden: {items.length}</h3>
-            </div>
+            <h3>
+              Meddelanden:
+              {items.length}
+            </h3>
           </div>
         </div>
-      );
-    }
-    return (
-      <>
-        <div className="container">
-          <SearchForm />
-
-          <h1>Profil</h1>
-
-          {profileInfo}
-          <h2>Meddelanden</h2>
-          <div className="profile-messages">{items}</div>
-        </div>
-      </>
+      </div>
     );
   }
-}
+  return (
+    <>
+      <div className="container">
+        <SearchForm />
 
-const mapStateToProps = (state) => ({
-  list: state.post.list,
-  profile: state.profile.user,
-  auth: state.auth,
-});
+        <h1>Profil</h1>
 
-export default connect(mapStateToProps, { getPostsByUserId, getUserProfile })(
-  Profile
-);
+        {profileInfo}
+
+        <h2>Meddelanden</h2>
+        <div className="profile-messages">{items}</div>
+      </div>
+    </>
+  );
+};
+
+export default Profile;

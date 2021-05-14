@@ -1,78 +1,76 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { loginUser } from "../../actions/authActions";
 import "./_auth.scss";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
+const Login = () => {
+  const [values, setValues] = useState({ email: "", password: "" });
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const errors = useSelector((state) => state.errors.errors);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+  const dispatch = useDispatch();
+  let history = useHistory();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push("/");
     }
+  });
+
+  if (errors) {
+    return <h1>Error...</h1>;
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-    if (nextProps.auth.isAuthenticated) this.props.history.push("/");
-  }
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-  handleSubmit(e) {
+
+  const handleEmailInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      email: e.target.value,
+    }));
+  };
+
+  const handlePasswordInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      password: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-      email: this.state.email,
-      password: this.state.password,
-    };
+    dispatch(loginUser(values));
+  };
 
-    this.props.loginUser(userData);
-  }
-  render() {
-    return (
-      <div className="form-container">
-        <form className="loginform-card" onSubmit={this.handleSubmit}>
-          <h1>Logga in</h1>
-          <input
-            label="Email"
-            name="email"
-            placeholder="Email"
-            type="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-          <br />
-          <input
-            label="Password"
-            name="password"
-            placeholder="Lösenord"
-            type="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <br />
-          <button inputtype="submit" value="Submit">
-            Logga in
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="form-container">
+      <form className="loginform-card" onSubmit={handleSubmit}>
+        <h1>Logga in</h1>
+        <input
+          label="Email"
+          name="email"
+          placeholder="Email"
+          type="email"
+          onChange={handleEmailInputChange}
+          value={values.email}
+        />
+        <br />
+        <input
+          label="Password"
+          name="password"
+          placeholder="password"
+          type="password"
+          onChange={handlePasswordInputChange}
+          value={values.password}
+        />
+        <br />
+        <button inputtype="submit" value="Submit">
+          Logga in
+        </button>
+      </form>
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-  errors: state.errors,
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, { loginUser })(withRouter(Login));
+export default Login;

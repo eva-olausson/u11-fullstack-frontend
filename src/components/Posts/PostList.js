@@ -1,30 +1,34 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import AddPost from "./AddPost";
 import Post from "./Post";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../actions/postActions";
 import LoadingPosts from "./LoadingPosts";
 import "./_add-post.scss";
 
-class PostList extends Component {
-  componentDidMount() {
-    this.props.getPosts();
-  }
-  render() {
-    const { list, loading } = this.props;
-    const items = list.map((p) => <Post key={p._id} post={p} />);
-    return (
-      <div className="postList-container">
-        <AddPost />
-        {loading ? <LoadingPosts /> : items}
-      </div>
-    );
-  }
-}
+const PostList = () => {
+  const list = useSelector((state) => state.post.list);
+  const loading = useSelector((state) => state.post.loading);
+  const errors = useSelector((state) => state.errors.errors);
 
-const mapStateToProps = (state) => ({
-  list: state.post.list,
-  loading: state.post.loading,
-});
+  const dispatch = useDispatch();
 
-export default connect(mapStateToProps, { getPosts })(PostList);
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
+  if (errors) {
+    return <h1>Error...</h1>;
+  }
+
+  const items = list.map((p) => <Post key={p._id} post={p} />);
+
+  return (
+    <div className="postList-container">
+      <AddPost />
+      {loading ? <LoadingPosts /> : items}
+    </div>
+  );
+};
+
+export default PostList;

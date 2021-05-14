@@ -9,9 +9,6 @@
 html,
 body {
   background-color: #fff0e5;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top left;
   font-family: "Poppins", Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
@@ -52,6 +49,7 @@ p {
 a {
   text-decoration: none;
   color: black;
+  font-family: "Poppins", Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 a:hover {
