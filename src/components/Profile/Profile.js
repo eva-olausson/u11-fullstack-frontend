@@ -55,14 +55,12 @@ const Profile = () => {
       <div className="container">
         <SearchForm />
 
-        <div className="cover">
-          <h1>Profil</h1>
+        <h1>Profil</h1>
 
-          {profileInfo}
+        {profileInfo}
 
-          <h2>Meddelanden</h2>
-          <div className="profile-messages">{items}</div>
-        </div>
+        <h2>Meddelanden</h2>
+        <div className="profile-messages">{items}</div>
       </div>
     </>
   );

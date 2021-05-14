@@ -18,25 +18,21 @@ const AddPost = () => {
   };
 
   return (
-    <div>
-      <div>
-        <form className="postform-card" onSubmit={handleSubmit}>
-          <br />
-          <input
-            label="text"
-            placeholder="What's happening?"
-            type="text"
-            onChange={handleChange}
-            value={postData.text}
-            name="text"
-          />
-          <br />
-          <button type="submit" value="Dela">
-            Dela
-          </button>
-        </form>
-      </div>
-    </div>
+    <form className="postform-card" onSubmit={handleSubmit}>
+      <br />
+      <input
+        label="text"
+        placeholder="What's happening?"
+        type="text"
+        onChange={handleChange}
+        value={postData.text}
+        name="text"
+      />
+      <br />
+      <button type="submit" value="Dela">
+        Dela
+      </button>
+    </form>
   );
 };
 
