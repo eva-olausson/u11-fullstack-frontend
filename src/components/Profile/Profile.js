@@ -19,7 +19,7 @@ const Profile = () => {
   useEffect(() => {
     dispatch(getPostsByUserId(userId));
     dispatch(getUserProfile(userId));
-  }, []);
+  }, [dispatch, userId]);
 
   if (errors) {
     return <h1>Error...</h1>;

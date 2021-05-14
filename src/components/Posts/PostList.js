@@ -15,7 +15,7 @@ const PostList = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   if (errors) {
     return <h1>Error...</h1>;
@@ -26,11 +26,7 @@ const PostList = () => {
   return (
     <div className="postList-container">
       <AddPost />
-
       {loading ? <LoadingPosts /> : items}
-      <div role="list">
-        <ul>{items}</ul>
-      </div>
     </div>
   );
 };

@@ -14,7 +14,7 @@ const AddPost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addPost(postData));
+    dispatch(addPost(postData), [dispatch]);
   };
 
   return (

@@ -12,11 +12,11 @@ import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 
 import { logoutUser } from "../../actions/authActions";
-import SearchForm from "../Search/SearchForm";
 
 const styles = {
   root: {
     flexGrow: 1,
+    fontFamily: "Poppins",
   },
   logo: {
     color: "#000",
