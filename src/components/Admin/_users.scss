@@ -9,11 +9,11 @@
   width: 100%;
 }
 
-.cover > .container > h1 {
+.container > h1 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: white;
+  color: $darkblue;
 }
 
 h1 > a {
@@ -25,19 +25,17 @@ h1 > a {
 }
 
 .user-card {
-  width: 100%;
+  width: 90%;
   min-height: 250px;
   padding: 0;
   background-color: white;
-  transition: 0.3s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   line-height: 2;
-  border-radius: 50px;
+  border-radius: 30px;
+  border: black 1px solid;
   text-align: center;
   margin-bottom: 2rem;
 
   .user-content {
-    background-color: $lightturquoise;
     max-height: 90px;
     border-radius: 50px 50px 0 0;
     padding-top: 1rem;
@@ -45,13 +43,12 @@ h1 > a {
   }
 
   button {
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: bold;
     margin-top: 1.1rem;
-    background: $turquoise;
-    background: $lightturquoise;
-    color: black;
+    background: #3a10e5;
+    color: white;
     border-radius: 100px;
     border: none;
     min-width: 117px;
@@ -68,23 +65,11 @@ h1 > a {
 }
 
 @media (min-width: 995px) {
-  .cover {
-    margin: auto;
-    padding-top: 1rem;
-  }
-  .cover > .container > h1 {
-    font-size: 30px;
-  }
-
-  .cover .post {
-    margin-bottom: 1.5rem;
-  }
-
   .user-content > h1 {
     font-size: 19px;
   }
   .user-card {
-    min-width: 300px;
+    width: 90%;
     min-height: 250px;
 
     button {
@@ -92,9 +77,6 @@ h1 > a {
       font-size: 1.2rem;
       font-weight: bold;
       margin-top: 1.7rem;
-      //background: rgba(93, 176, 171, 0.63);
-      background: $lightturquoise;
-      color: black;
       border-radius: 100px;
       border: none;
       min-width: 130px;

@@ -12,17 +12,15 @@ const styles = (theme) => ({
   search: {
     position: "relative",
     borderRadius: "50px",
-    backgroundColor: "#F0F0F0",
-    boxShadow: "0 8px 6px -6px black",
-    marginLeft: 0,
-    marginBottom: "2rem",
-    minWidth: "50%",
+    backgroundColor: "white",
+    margin: "2rem auto",
+    border: "solid black 1px",
+    width: "90%",
     minHeight: "3rem",
 
     height: "50px",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing.unit * 3,
-      width: "auto",
     },
   },
   searchIcon: {
@@ -40,7 +38,7 @@ const styles = (theme) => ({
     width: "100%",
   },
   inputInput: {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins, Arial, HelveticaNeue, Helvetica, sansSerif",
     paddingTop: "1rem",
     paddingLeft: "4rem",
     transition: theme.transitions.create("width"),

@@ -17,7 +17,6 @@ class PostList extends Component {
       <div className="postList-container">
         <AddPost />
         {loading ? <LoadingPosts /> : items}
-        <ul>{items}</ul>
       </div>
     );
   }
