@@ -7,7 +7,7 @@
   margin: auto;
   flex-direction: column;
   height: 100%;
-  width: 100%;
+  width: 25rem;
   position: relative;
 
   h1 {
@@ -16,7 +16,7 @@
   }
 
   .loginform-card {
-    min-height: 336px;
+    min-height: 20rem;
     width: 90%;
     padding: 2rem;
     border: black solid 1px;
@@ -56,30 +56,10 @@ button {
   border-radius: 100px;
   border: none;
   width: 14rem;
-  height: 53px;
+  min-height: 45px;
   margin-top: 1rem;
   cursor: pointer;
   &:focus {
     outline: 0;
-  }
-}
-
-@media (min-width: $medium) {
-  input {
-    min-width: 17rem;
-  }
-  .loginform-card {
-    min-height: 336px;
-    max-width: 400px;
-  }
-}
-
-@media (min-width: $very-big) {
-  input {
-    min-width: 17rem;
-  }
-  .loginform-card {
-    min-height: 336px;
-    min-width: 100%;
   }
 }

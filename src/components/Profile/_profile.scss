@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .profile-container {
   position: relative;
   display: flex;
@@ -49,13 +51,12 @@
   align-items: center;
 }
 
-@media (min-width: 995px) {
+@media (min-width: $medium) {
   .profile-content > h1 {
     font-size: 27px;
   }
 
   .profile-card {
-    min-height: 2515rem0px;
     padding: 0;
     background-color: white;
     transition: 0.3s;

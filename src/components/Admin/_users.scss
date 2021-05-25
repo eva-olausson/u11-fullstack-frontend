@@ -64,7 +64,10 @@ h1 > a {
   }
 }
 
-@media (min-width: 995px) {
+@media (min-width: $medium) {
+  .user-content {
+    padding-top: 1.2rem;
+  }
   .user-content > h1 {
     font-size: 19px;
   }

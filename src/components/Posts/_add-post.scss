@@ -16,7 +16,7 @@
 
   .postform-card {
     width: 90%;
-    height: 13rem;
+    min-height: 13rem;
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: white;
@@ -58,6 +58,13 @@
     &:focus {
       outline: 0;
     }
+  }
+}
+
+@media (max-width: $small) {
+  .postform-card input {
+    height: 3rem;
+    max-width: 12em;
   }
 }
 
