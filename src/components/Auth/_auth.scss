@@ -64,12 +64,22 @@ button {
   }
 }
 
-@media (min-width: 995px) {
+@media (min-width: $medium) {
   input {
     min-width: 17rem;
   }
   .loginform-card {
     min-height: 336px;
     max-width: 400px;
+  }
+}
+
+@media (min-width: $very-big) {
+  input {
+    min-width: 17rem;
+  }
+  .loginform-card {
+    min-height: 336px;
+    min-width: 100%;
   }
 }
