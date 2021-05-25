@@ -16,7 +16,7 @@
 
   .postform-card {
     width: 90%;
-    height: 15rem;
+    min-height: 13rem;
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: white;
@@ -33,10 +33,10 @@
     color: white;
     border-radius: 100px;
     border: none;
-    min-width: 125px;
-    height: 48px;
-    top: 9.8rem;
-    right: 3.5rem;
+    max-width: 121px;
+    height: 45px;
+    top: 7.6rem;
+    right: 3rem;
     cursor: pointer;
     &:focus {
       outline: 0;
@@ -49,9 +49,9 @@
     font-size: 14px;
     color: #898a8d;
     border: none;
-    width: 14rem;
-    height: 3rem;
-    margin: 1.4rem 0 0 2rem;
+    min-width: 16rem;
+    height: 2.8rem;
+    margin: 1.4rem 1rem 2rem;
     overflow: hidden;
     border-radius: 15px;
     text-indent: 30px;
@@ -61,10 +61,17 @@
   }
 }
 
+@media (max-width: $small) {
+  .postform-card input {
+    height: 3rem;
+    max-width: 12em;
+  }
+}
+
 @media (min-width: $medium) {
   .postform-card {
     width: 100%;
-    height: 17rem;
+    min-width: 25rem;
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: white;
@@ -73,12 +80,12 @@
     border: solid black 1px;
   }
   .postform-card input {
-    min-width: 17rem;
     height: 3rem;
+    min-width: 17rem;
   }
 
   .postList-container button {
-    min-width: 130px;
     height: 43px;
+    right: 3.5rem;
   }
 }

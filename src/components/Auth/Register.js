@@ -60,7 +60,7 @@ const Register = () => {
 
   return (
     <div className="form-container">
-      <form className="signupform-card" onSubmit={handleSubmit}>
+      <form className="loginform-card" onSubmit={handleSubmit}>
         <h1>Skapa konto</h1>
 
         <input

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { deleteProfile } from "../../actions/profileActions";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
